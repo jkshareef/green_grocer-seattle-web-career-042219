@@ -78,11 +78,11 @@ def checkout(cart, coupons)
   cart = apply_coupons(cart, coupons)
   cart = apply_clearance(cart)
   
-  binding.pry
+  
   
   cart.each do |item, info|
     total += info[:price]*info[:count]
-    binding.pry
+    #binding.pry
   end
   
   if total > 100
