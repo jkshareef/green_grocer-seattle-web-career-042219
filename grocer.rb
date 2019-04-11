@@ -48,9 +48,9 @@ def apply_coupons(cart, coupons)
             new_hash[item][:count] = remainder #include remaining non-discounted
           
             new_hash["#{item} W/COUPON"] = {:price => coupon[:cost], :clearance => info[:clearance], :count => count} #create coupon item info
-          
+            binding.pry
               if new_hash[item][:count] == 0
-                new_hash.delete(item)
+                new_hash.delete(item)  #if coupon amount perfect match, then 0 non-discounted items remain
               end
           else
             new_hash[item] = info
