@@ -35,23 +35,21 @@ def apply_coupons(cart, coupons)
   new_hash = {}
   
   cart.each do |item, info|
-    if coupons.length > 0
-      coupons.each do |coupon|
-        if coupon[:item] == item
-          if info[:count] >= coupon[:num]
-            count = info[:count] / coupon[:num]
-            remainder = info[:count] % coupon[:num]
-            new_hash[item] = info
-            new_hash[item][:count] = remainder
-            new_hash["#{item} W/COUPON"] = {:price => coupon[:cost], :clearance => info[:clearance], :count => count}
-            if new_hash[item][:count] == 0
+    coupons.each do |coupon|
+      if coupon[:item] == item
+        if info[:count] >= coupon[:num]
+          count = info[:count] / coupon[:num]
+          remainder = info[:count] % coupon[:num]
+          new_hash[item] = info
+          new_hash[item][:count] = remainder
+          new_hash["#{item} W/COUPON"] = {:price => coupon[:cost], :clearance => info[:clearance], :count => count}
+          if new_hash[item][:count] == 0
             new_hash.delete(item)
-            end
           end
+        else
+          new_hash[item] = info
         end
       end
-    else
-        new_hash[item] = info
     end
   end
   new_hash
@@ -73,18 +71,17 @@ def checkout(cart, coupons)
   # code here
   
   total = 0
-  
-  binding.pry
+  #binding.pry
   cart = consolidate_cart(cart)
   cart = apply_coupons(cart, coupons)
-  binding.pry
+  #binding.pry
   cart = apply_clearance(cart)
   
   
   
   cart.each do |item, info|
     total += info[:price]*info[:count]
-    binding.pry
+    #binding.pry
   end
   
   if total > 100
