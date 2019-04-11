@@ -46,6 +46,9 @@ def apply_coupons(cart, coupons)
           if new_hash[item][:count] == 0
             new_hash.delete(item)
           end
+        else
+          new_hash[item] = info
+        end
       else
         new_hash[item] = info
       end
