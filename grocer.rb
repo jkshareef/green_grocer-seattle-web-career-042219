@@ -82,7 +82,7 @@ def checkout(cart, coupons)
   
   cart.each do |item, info|
     total += info[:price]*info[:count]
-    #binding.pry
+    binding.pry
   end
   
   if total > 100
