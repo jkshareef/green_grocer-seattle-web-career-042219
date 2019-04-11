@@ -36,16 +36,17 @@ def apply_coupons(cart, coupons)
   
   cart.each do |item, info|
     coupons.each do |coupon|
-    if coupon[:item] == item
-      if info[:count] >= coupon[:num]
+      if coupon[:item] == item
+       if info[:count] >= coupon[:num]
         count = info[:count] / coupon[:num]
         remainder = info[:count] % coupon[:num]
         new_hash[item] = info
         new_hash[item][:count] = remainder
         new_hash["#{item} W/COUPON"] = {:price => coupon[:cost], :clearance => true, :count => count}
+        end
+     else
+        new_hash[item] = info
       end
-    else
-      new_hash[item] = info
     end
   end
   new_hash
