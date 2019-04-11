@@ -35,6 +35,7 @@ def apply_coupons(cart, coupons)
   new_hash = {}
   
   cart.each do |item, info|
+    if coupons.length > 0
     coupons.each do |coupon|
       if coupon[:item] == item  #if coupon item is in cart
         if info[:count] >= coupon[:num] #if coupon amount is valid for cart
