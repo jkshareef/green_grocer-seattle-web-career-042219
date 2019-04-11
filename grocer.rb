@@ -37,7 +37,6 @@ def apply_coupons(cart, coupons)
   cart.each do |item, info|
     coupons.each do |coupon|
       if coupon[:item] == item
-        binding.pry
         if info[:count] >= coupon[:num]
           count = info[:count] / coupon[:num]
           remainder = info[:count] % coupon[:num]
@@ -49,7 +48,6 @@ def apply_coupons(cart, coupons)
           end
         end
      else
-        binding.pry
         new_hash[item] = info
       end
     end
