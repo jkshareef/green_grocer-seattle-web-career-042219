@@ -58,9 +58,9 @@ def apply_coupons(cart, coupons)
         else
           new_hash[item] = info
         end
-      else
-        new_hash[item] = info
       end
+    else
+      new_hash[item] = info
     end
   end
   new_hash
