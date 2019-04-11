@@ -41,7 +41,7 @@ def apply_coupons(cart, coupons)
         remainder = info[:count] % coupons[:num]
         new_hash[item] = info
         new_hash[item][:count] = remainder
-        new_hash["#{item} W/COUPON"] = {:price => coupons[:cost]}, :clearance => true, :count => count}
+        new_hash["#{item} W/COUPON"] = {:price => coupons[:cost], :clearance => true, :count => count}
       end
     else
       new_hash[item] = info
