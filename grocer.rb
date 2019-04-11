@@ -44,6 +44,8 @@ def apply_coupons(cart, coupons)
           new_hash[item] = info
           new_hash[item][:count] = remainder
           new_hash["#{item} W/COUPON"] = {:price => coupon[:cost], :clearance => true, :count => count}
+          if new_hash[item][:count] == 0
+            new_hash[item]
         end
      else
         binding.pry
