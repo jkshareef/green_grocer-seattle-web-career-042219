@@ -49,15 +49,7 @@ def apply_coupons(cart, coupons)
   end
   new_hash
 end
-      
-  
-  #cart.each do |item, info|
-   # new_hash[item] = {}
-  #end
-  
-  
-    
-end
+
 
 def apply_clearance(cart)
   # code here
